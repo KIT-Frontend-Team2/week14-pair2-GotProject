@@ -1,8 +1,13 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 
-export const fetchIssues = createAsyncThunk('issues/fetchIssues', async () => {
-	const res = await axios.get(process.env.REACT_APP_BACKEND_URL)
+export const fetchIssues = createAsyncThunk('issues/fetchIssues', async (currentPage) => {
+	const res = await axios.get(process.env.REACT_APP_BACKEND_URL,{
+		params: {
+      page: currentPage,
+      per_page: 100,
+    },
+	})
 	return res.data
 })
 
