@@ -19,6 +19,7 @@ const MainPage = () => {
 						<h2>{issue.title}</h2>
 						<p>{issue.body}</p>
 						<Link to={`/issues/${issue.number}`}>View Details</Link>
+						
 					</li>
 				))}
 			</ul>

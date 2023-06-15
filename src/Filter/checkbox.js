@@ -3,7 +3,7 @@ import { useState } from "react"
 
 function Checkbox(){
 
-    const CheckBox = (props) => {
+    const CheckBox = () => {
         const [checkboxes, setCheckboxes] = useState({
           optionA: false,
           optionB: false,
