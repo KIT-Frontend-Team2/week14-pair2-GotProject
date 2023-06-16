@@ -1,20 +1,5 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useParams, useSearchParams } from 'react-router-dom'
-
-import { fetchIssues } from 'reducer/issue'
-import Pasy from './components/pagination'
-
-const MainPage = () => {
-	
-	const dispatch = useDispatch()
-	const { pageNum } = useParams()
-	const { issues } = useSelector(state => state.issue)
-	const [searchParams, setSearchParams] = useSearchParams()
-	const [currentPage, setCurrentPage] = useState(parseInt(pageNum) || 1)
-	const itemsPerPage = 10
-	const totalItems = 200
-	const totalPages = Math.ceil(totalItems / itemsPerPage)
 
 
 	const emptyIssue = { title: '', body: '', id: Math.floor(Math.random()) }
@@ -31,9 +16,11 @@ const MainPage = () => {
 	}, [dispatch, pageNum])
 
 
+
 	return (
 		<div>
 			<h1>Angular CLI!</h1>
+
 			<ul>
 				{currentIssues.map(issue => (
 					<li>
@@ -43,11 +30,7 @@ const MainPage = () => {
 					</li>
 				))}
 			</ul>
-			<Pasy 
-				setCurrentPage= {setCurrentPage}
-				currentPage ={currentPage}
-				totalPages={totalPages}
-			/>
+
 		</div>
 	)
 }
