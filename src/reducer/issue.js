@@ -9,7 +9,9 @@ export const fetchIssues = createAsyncThunk('issues/fetchIssues', async () => {
 export const fetchIssueDetails = createAsyncThunk(
 	'issues/fetchIssueDetails',
 	async number => {
-		const res = await axios.get(process.env.REACT_APP_BACKEND_URL + `${number}`)
+		const res = await axios.get(
+			`${process.env.REACT_APP_BACKEND_URL}/${number}`,
+		)
 		return res.data
 	},
 )
@@ -21,7 +23,7 @@ const initialState = {
 		done: false,
 		error: null,
 	},
-	detail: {},
+	details: {},
 }
 
 export const issueSlice = createSlice({
@@ -50,7 +52,7 @@ export const issueSlice = createSlice({
 			state.fetchIssueState.error = null
 		})
 		builder.addCase(fetchIssueDetails.fulfilled, (state, action) => {
-			state.detail = action.payload
+			state.details = action.payload
 			state.fetchIssueState.loading = false
 			state.fetchIssueState.done = true
 			state.fetchIssueState.error = null
