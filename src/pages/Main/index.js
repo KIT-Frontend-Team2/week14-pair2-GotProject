@@ -6,7 +6,6 @@ import { fetchIssues } from 'reducer/issue'
 import Pasy from './components/pagination'
 
 const MainPage = () => {
-	
 	const dispatch = useDispatch()
 	const { pageNum } = useParams()
 	const { issues } = useSelector(state => state.issue)
@@ -15,7 +14,6 @@ const MainPage = () => {
 	const itemsPerPage = 10
 	const totalItems = 200
 	const totalPages = Math.ceil(totalItems / itemsPerPage)
-
 
 	const emptyIssue = { title: '', body: '', id: Math.floor(Math.random()) }
 	const firstIndex = (currentPage - 1) * itemsPerPage
@@ -30,7 +28,6 @@ const MainPage = () => {
 		dispatch(fetchIssues(currentPage))
 	}, [dispatch, pageNum])
 
-
 	return (
 		<div>
 			<h1>Angular CLI!</h1>
@@ -43,9 +40,9 @@ const MainPage = () => {
 					</li>
 				))}
 			</ul>
-			<Pasy 
-				setCurrentPage= {setCurrentPage}
-				currentPage ={currentPage}
+			<Pasy
+				setCurrentPage={setCurrentPage}
+				currentPage={currentPage}
 				totalPages={totalPages}
 			/>
 		</div>
