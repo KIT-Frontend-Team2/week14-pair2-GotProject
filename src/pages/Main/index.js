@@ -1,9 +1,8 @@
 import CheckBox from 'Filter/checkbox'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-
+import CheckBox from 'Filter/checkbox'
 import { Link, useParams, useSearchParams } from 'react-router-dom'
-
 import { fetchIssues } from 'reducer/issue'
 import styled from 'styled-components'
 import Pasy from './components/pagination'
@@ -21,6 +20,10 @@ const MainPage = () => {
 	const itemsPerPage = 10
 	const totalItems = 200
 	const totalPages = Math.ceil(totalItems / itemsPerPage)
+	const { filters, setFilters } = useState({
+		continents: [],
+		price: [],
+	})
 
 	const emptyIssue = { title: '', body: '', id: Math.floor(Math.random()) }
 	const firstIndex = (currentPage - 1) * itemsPerPage
@@ -59,9 +62,11 @@ const MainPage = () => {
 		setFilters(newFilters)
 	}
 
+
 	return (
 		<div>
 			<h1>Angular CLI!</h1>
+
 			<CheckBox
 				handleFilters={filters => handleFilters(filters, 'continents')}
 			/>
@@ -81,6 +86,7 @@ const MainPage = () => {
 							<p>{issue.user?.login}</p>
 							<p>{issue.create_at}</p>
 						</StyledLink>
+
 					</li>
 				))}
 			</ul>

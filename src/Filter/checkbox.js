@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Collapse } from 'react-collapse'
 
 //collapse는 접어주는거 열면 보이는거
-const Panel = Collapse
 //여기에는 템플릿 체크박스 댓글순,업데이트순,생성순
 const continents = [
 	{
@@ -21,6 +20,8 @@ const continents = [
 
 function CheckBox(props) {
 	const [checked, setChecked] = useState([])
+	const [isCollapseOpen, setIsCollapseOpen] = useState(false)
+	//아싸 해결 true를 false로 바꿔서 해결완 ㅎㅎㅎㅎㅎㅎㅎ 죽것다
 	//checkbox일단 다 체크되어있는상태로만든다음에 하나씩풀면 그거 빼고 보여주는식으로 하고싶음. 될까?너무어려운거하나 나주제?
 
 	//이거 이벤트로 받아와야할거같은데 내가 value로 줘버려서 하...현타온다 다시하는거 실화냐
@@ -39,22 +40,36 @@ function CheckBox(props) {
 		//이거 위로 props로 보내서 넘겨줄려고.....될려나...하아....
 	}
 
+	const toggleCollapse = () => {
+		setIsCollapseOpen(!isCollapseOpen)
+	}
+
 	const renderCheckboxLists = () => {
 		return continents.map((value, index) => (
 			<React.Fragment key={index}>
-				<input
-					type="checkbox"
-					onChange={() => handleChange(value.id)}
-					checked={checked.indexOf(value.id) === -1 ? false : true}
-				/>
-				<span>{value.name}</span>
+				<label>
+					<input
+						type="checkbox"
+						onChange={() => handleChange(value.id)}
+						checked={checked.indexOf(value.id) === -1 ? false : true}
+					/>
+					{value.name}
+				</label>
 			</React.Fragment>
 		))
 	}
 
-	return <div>{renderCheckboxLists()}</div>
-}
 
+
+	return (
+		<div>
+			<button onClick={toggleCollapse}>{isCollapseOpen ? '▼' : '▲'}</button>
+			<Collapse defaultActiveKey={['0']} isOpened={isCollapseOpen}>
+				{renderCheckboxLists()}
+			</Collapse>
+		</div>
+	)
+}
 export default CheckBox
 
 // import { useState } from 'react'
@@ -118,4 +133,3 @@ export default CheckBox
 // 		)
 // 	}
 // }
-// export default Checkbox
