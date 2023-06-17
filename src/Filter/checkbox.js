@@ -40,7 +40,7 @@ function CheckBox(props) {
 	}
 
 	const renderCheckboxLists = () => {
-		continents.map((value, index) => (
+		return continents.map((value, index) => (
 			<React.Fragment key={index}>
 				<input
 					type="checkbox"
@@ -52,15 +52,7 @@ function CheckBox(props) {
 		))
 	}
 
-	return (
-		<div>
-			<Collapse defaultActiveKey={['0']}>
-				<Panel header key="1">
-					{renderCheckboxLists()}
-				</Panel>
-			</Collapse>
-		</div>
-	)
+	return <div>{renderCheckboxLists()}</div>
 }
 
 export default CheckBox
