@@ -36,7 +36,6 @@ const Pasy = ({ setCurrentPage, currentPage, totalPages }) => {
 			setCurrentPage(1)
 		}
 	}, [searchParams])
-	
 
 	//번호 클릭 했을때 리스트 가져오기
 	const handlePageClick = index => {

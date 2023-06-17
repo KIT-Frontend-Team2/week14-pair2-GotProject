@@ -15,7 +15,7 @@ function App() {
 	return (
 		<ThemeProvider theme={theme}>
 			<Provider store={store}>
-				<GlobalStyles/>
+				<GlobalStyles />
 				<RouterProvider router={router} />
 			</Provider>
 		</ThemeProvider>

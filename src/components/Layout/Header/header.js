@@ -1,26 +1,24 @@
-import { flexAlignCenter,flexBtween,h1Text, margin } from 'style/common'
+import { flexAlignCenter, flexBtween, h1Text, margin } from 'style/common'
 import styled from 'styled-components'
-import logoImage1 from "../../../images/git.png"
+import logoImage1 from '../../../images/git.png'
 
 const Header = () => {
-
-
 	return (
 		// <div>header</div>
-	<S.Wrapper>
+		<S.Wrapper>
 			<S.Container>
 				<S.Left>
-					<S.logoImage src={logoImage1}/>
+					<S.logoImage src={logoImage1} />
 				</S.Left>
 				<S.Middle>
 					<S.Logo>Git Issues </S.Logo>
 				</S.Middle>
 				<S.Right>
-						<S.MenuItem>Home</S.MenuItem>
-						<S.MenuItem>Repository</S.MenuItem>
+					<S.MenuItem>Home</S.MenuItem>
+					<S.MenuItem>Repository</S.MenuItem>
 				</S.Right>
-    </S.Container>
-	</S.Wrapper>
+			</S.Container>
+		</S.Wrapper>
 	)
 }
 
@@ -33,33 +31,30 @@ const Wrapper = styled.div`
 	border-bottom: 1px dotted #999;
 	padding: 8px 16px;
 
-  //for Mobiles
-  @media only screen and (max-width: 600px) {
-    width: 100%;
-    height: 8%;
-  }
-  //for Tablets and Medium Screens
-  @media only screen and (min-width: 600px) {
-    width: 100%;
-    height: 5%;
-  }
-  //for laptops and desktops
-  @media only screen and (min-width: 992px) {
-    width: 100%;
-    height: 120px;
+	//for Mobiles
+	@media only screen and (max-width: 600px) {
+		width: 100%;
+		height: 8%;
+	}
+	//for Tablets and Medium Screens
+	@media only screen and (min-width: 600px) {
+		width: 100%;
+		height: 5%;
+	}
+	//for laptops and desktops
+	@media only screen and (min-width: 992px) {
+		width: 100%;
+		height: 120px;
 	}
 `
 
 const Container = styled.div`
-${margin}
+	${margin}
 	width: 100%;
 	${flexBtween}
 `
 
-const Left = styled.div`
-
-
-`
+const Left = styled.div``
 const Logo = styled.h1`
 	color: ${({ theme }) => theme.PALETTE.white};
 	${h1Text};
@@ -68,18 +63,18 @@ const Logo = styled.h1`
 const Middle = styled.div`
 	display: block;
 
-  //for Mobiles
-  @media only screen and (max-width: 600px) {
-    display: none;
-  }
-  //for Tablets and Medium Screens
-  @media only screen and (min-width: 600px) {
+	//for Mobiles
+	@media only screen and (max-width: 600px) {
 		display: none;
-  }
+	}
+	//for Tablets and Medium Screens
+	@media only screen and (min-width: 600px) {
+		display: none;
+	}
 
-	  //for laptops and desktops
-		@media only screen and (min-width: 992px) {
-    display: block;
+	//for laptops and desktops
+	@media only screen and (min-width: 992px) {
+		display: block;
 	}
 `
 
@@ -88,20 +83,19 @@ const MenuItem = styled.li`
 	margin-left: 15px;
 	color: ${({ theme }) => theme.PALETTE.white};
 	:hover {
-				color: ${({ theme }) => theme.PALETTE.red};
-				transition: 0.5s;
-			}
-
+		color: ${({ theme }) => theme.PALETTE.red};
+		transition: 0.5s;
+	}
 `
 
 const Right = styled.ul`
-		${flexBtween}
+	${flexBtween}
 `
 
 const logoImage = styled.img`
-    width: 48px;
-    height: 48px;
-		object-fit: cover;
+	width: 48px;
+	height: 48px;
+	object-fit: cover;
 `
 
 const S = {
@@ -112,6 +106,5 @@ const S = {
 	Middle,
 	Right,
 	MenuItem,
-	logoImage
+	logoImage,
 }
-
