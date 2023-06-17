@@ -59,6 +59,8 @@ function CheckBox(props) {
 		))
 	}
 
+
+
 	return (
 		<div>
 			<button onClick={toggleCollapse}>{isCollapseOpen ? '▼' : '▲'}</button>
