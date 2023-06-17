@@ -44,34 +44,29 @@ function CheckBox(props) {
 		setIsCollapseOpen(!isCollapseOpen)
 	}
 
-const renderCheckboxLists = () => {
-  return continents.map((value, index) => (
-    <React.Fragment key={index}>
-		<label>
-      <input
-        type="checkbox"
-        onChange={() => handleChange(value.id)}
-        checked={checked.indexOf(value.id) === -1 ? false : true}
-		/>
-      {value.name}
-		</label>
-    </React.Fragment>
-  ));
-};
+	const renderCheckboxLists = () => {
+		return continents.map((value, index) => (
+			<React.Fragment key={index}>
+				<label>
+					<input
+						type="checkbox"
+						onChange={() => handleChange(value.id)}
+						checked={checked.indexOf(value.id) === -1 ? false : true}
+					/>
+					{value.name}
+				</label>
+			</React.Fragment>
+		))
+	}
 
 	return (
 		<div>
-			<button onClick={toggleCollapse}>
-        {isCollapseOpen ? '▼' : '▲'}
-      </button>
+			<button onClick={toggleCollapse}>{isCollapseOpen ? '▼' : '▲'}</button>
 			<Collapse defaultActiveKey={['0']} isOpened={isCollapseOpen}>
-				
-					{renderCheckboxLists()}
-				
+				{renderCheckboxLists()}
 			</Collapse>
 		</div>
 	)
-
 }
 export default CheckBox
 

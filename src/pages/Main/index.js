@@ -19,7 +19,6 @@ const MainPage = () => {
 		price: [],
 	})
 
-
 	const emptyIssue = { title: '', body: '', id: Math.floor(Math.random()) }
 	const firstIndex = (currentPage - 1) * itemsPerPage
 	const lastIndex = currentPage * itemsPerPage
@@ -57,15 +56,14 @@ const MainPage = () => {
 		setFilters(newFilters)
 	}
 
-
 	return (
 		<div>
 			<h1>Angular CLI!</h1>
 			<div>
-			<CheckBox
-				handleFilters={filters => handleFilters(filters, 'continents')}
+				<CheckBox
+					handleFilters={filters => handleFilters(filters, 'continents')}
 				/>
-				</div>
+			</div>
 			<ul>
 				{currentIssues.map(issue => (
 					<li>
@@ -81,7 +79,6 @@ const MainPage = () => {
 				currentPage={currentPage}
 				totalPages={totalPages}
 			/>
-
 		</div>
 	)
 }
