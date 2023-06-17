@@ -19,6 +19,7 @@ const MainPage = () => {
 		price: [],
 	})
 
+
 	const emptyIssue = { title: '', body: '', id: Math.floor(Math.random()) }
 	const firstIndex = (currentPage - 1) * itemsPerPage
 	const lastIndex = currentPage * itemsPerPage
@@ -56,6 +57,7 @@ const MainPage = () => {
 		setFilters(newFilters)
 	}
 
+
 	return (
 		<div>
 			<h1>Angular CLI!</h1>
@@ -69,7 +71,7 @@ const MainPage = () => {
 					<li>
 						<h2>{issue.title}</h2>
 						<p>{issue.body}</p>
-						<Link to={`/issues/${issue.id}`}>View Details</Link>
+						<Link to={`/issues/${issue.number}`}>View Details</Link>
 					</li>
 				))}
 			</ul>
