@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
+import { flexAlignCenter, flexCenter } from 'style/common'
+import styled from 'styled-components'
 
 const Pasy = ({ setCurrentPage, currentPage, totalPages }) => {
 	const [searchParams, setSearchParams] = useSearchParams()
@@ -62,14 +64,18 @@ const Pasy = ({ setCurrentPage, currentPage, totalPages }) => {
 	//이전 클릭
 	const handlePrevClick = () => {
 		if (currentPage > 1) {
-			const prevPage = currentPage - 1
-			setCurrentPage(prevPage)
+			const prevPage = currentPage - 1;
+			setCurrentPage(prevPage);
 			if ((prevPage - 1) % pageGroupSize === 0) {
-				setPageGroup(pageGroup - 1)
+				if (pageGroup > 1) { // 페이지 그룹이 1보다 작아지지 않도록 조건 추가
+					setPageGroup(pageGroup - 1);
+				}
+			} else if (currentPage === startPage) {
+				setPageGroup(pageGroup - 1);
 			}
-			setSearchParams({ pageNum: prevPage })
+			setSearchParams({ pageNum: prevPage });
 		}
-	}
+	};
 
 	console.log(currentPage)
 
@@ -86,22 +92,125 @@ const Pasy = ({ setCurrentPage, currentPage, totalPages }) => {
 	}
 
 	return (
-		<ul>
-			<button onClick={() => handleFirstPageClick()}>맨처음</button>
-			<button onClick={() => handlePrevClick()}>이전</button>
+		<S.Pagination>
+			<button onClick={() => handleFirstPageClick()}>&#8249;&#8249;</button>
+			<button onClick={() => handlePrevClick()}>&#8249;</button>
 			{pageNumbers.map(index => (
-				<button
+				<S.PageNumber
 					key={index}
 					onClick={() => handlePageClick(index)}
-					style={{ fontWeight: currentPage === index ? 'bold' : 'normal' }}
+					isSelected={currentPage === index}
 				>
 					{index}
-				</button>
+				</S.PageNumber>
 			))}
-			<button onClick={() => handleNextClick()}>다음</button>
-			<button onClick={() => handleLastPageClick()}>맨끝</button>
-		</ul>
+			<button onClick={() => handleNextClick()}>&#62;</button>
+			<button onClick={() => handleLastPageClick()}>&#62;&#62;</button>
+		</S.Pagination>
 	)
 }
 
 export default Pasy
+
+
+const Pagination = styled.div`
+${flexAlignCenter}
+	width: 50%;
+	padding: 2rem 0 2rem 0;
+	margin: 0 auto;
+	text-align: center;
+	justify-content: center;
+	& button{
+		border-radius: 0.5rem;
+		border: 1px solid gray;
+		font-size: 14px;
+		width: 36px;
+		height: 36px;
+		margin: 0 3px;
+		:hover {
+			cursor: pointer;
+			background-color: ${({ theme }) => theme.PALETTE.black};
+			color: ${({ theme }) => theme.PALETTE.white};
+			transition: 0.5s;
+		}
+
+		//for Mobiles
+	@media only screen and (max-width: 600px) {
+		width: 20px;
+      height: 20px;
+      font-size: 10px;
+	}
+	//for Tablets and Medium Screens
+	@media only screen and (min-width: 600px) {
+		width: 20px;
+    height: 20px;
+	}
+	//for laptops and desktops
+	@media only screen and (min-width: 992px) {
+		width: 36px;
+		height: 36px;
+	}
+	}
+		//for Mobiles
+		@media only screen and (max-width: 600px) {
+			width: 80%;
+	}
+	//for Tablets and Medium Screens
+	@media only screen and (min-width: 600px) {
+		width: 80%;
+	}
+	//for laptops and desktops
+	@media only screen and (min-width: 992px) {
+		width: 50%;
+	}
+
+	&:first-child{
+		font-size: 60PX;
+	}
+
+	
+`
+const PageNumber = styled.li`
+	${flexCenter}
+	width: 36px;
+  height: 36px;
+  list-style: none;
+  border-radius: 0.5rem;
+  font-size: 14px;
+  margin: 0 3px;
+  font-weight: ${({ isSelected }) => (isSelected ? 'bold' : 'normal')};
+  background-color: ${({ isSelected, theme }) =>
+  isSelected ? theme.PALETTE.black : theme.PALETTE.gray};
+  color: ${({ isSelected, theme }) =>
+  isSelected ? theme.PALETTE.white : theme.PALETTE.black};
+  cursor: pointer;
+
+  :hover {
+    background-color: ${({ theme }) => theme.PALETTE.black};
+    color: ${({ theme }) => theme.PALETTE.white};
+  }
+
+		//for Mobiles
+		@media only screen and (max-width: 600px) {
+		width: 20px;
+    height: 20px;
+    font-size: 10px;
+	}
+	//for Tablets and Medium Screens
+	@media only screen and (min-width: 600px) {
+		width: 20px;
+		height: 20px
+	}
+	//for laptops and desktops
+	@media only screen and (min-width: 992px) {
+		width: 36px;
+		height: 36px;
+	}
+`
+
+const S = {
+	Pagination,
+	PageNumber
+}
+
+

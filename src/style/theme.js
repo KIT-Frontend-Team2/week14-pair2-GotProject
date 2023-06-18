@@ -7,6 +7,7 @@ export const PALETTE = {
 	secondary: '#EBF1F4',
 	fontColor: '#FFFFFF',
 	white: '#FFFFFF',
+	black: '#333',
 	red: 'red',
 	background: {
 		white: '#FFFFFF',
