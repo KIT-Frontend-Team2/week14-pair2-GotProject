@@ -11,13 +11,13 @@ const MainPage = () => {
 	const { pageNum } = useParams()
 	const { issues } = useSelector(state => state.issue)
 	const [currentPage, setCurrentPage] = useState(parseInt(pageNum) || 1)
+	const itemsPerPage = 10
+	const totalItems = 200
+	const totalPages = Math.ceil(totalItems / itemsPerPage)
 	const { filters, setFilters } = useState({
 		continents: [],
 		price: [],
 	})
-	const itemsPerPage = 10
-	const totalItems = 200
-	const totalPages = Math.ceil(totalItems / itemsPerPage)
 
 	const emptyIssue = { title: '', body: '', id: Math.floor(Math.random()) }
 	const firstIndex = (currentPage - 1) * itemsPerPage
@@ -59,6 +59,7 @@ const MainPage = () => {
 	return (
 		<div>
 			<h1>Angular CLI!</h1>
+
 			<CheckBox
 				handleFilters={filters => handleFilters(filters, 'continents')}
 			/>

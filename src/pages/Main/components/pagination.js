@@ -68,7 +68,6 @@ const Pasy = ({ setCurrentPage, currentPage, totalPages }) => {
 				setPageGroup(pageGroup - 1)
 			}
 			setSearchParams({ pageNum: prevPage })
-			console.log(pageNumFromURL)
 		}
 	}
 
