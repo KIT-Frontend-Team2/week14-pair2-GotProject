@@ -6,9 +6,6 @@ import { fetchIssues } from 'reducer/issue'
 import styled from 'styled-components'
 import Pasy from './components/pagination'
 
-
-
-
 const MainPage = () => {
 	const dispatch = useDispatch()
 	const { pageNum } = useParams()
@@ -61,34 +58,34 @@ const MainPage = () => {
 
 	return (
 		<S.Wrapper>
-		<S.Top>
-			<Title>Angular CLI!</Title>
+			<S.Top>
+				<Title>Angular CLI!</Title>
 
-		<S.Right>
-			<S.CheckBox2
-			handleFilters={filters => handleFilters(filters, 'continents')}
-		/>
+				<S.Right>
+					<S.CheckBox2
+						handleFilters={filters => handleFilters(filters, 'continents')}
+					/>
 
-			<ul>
-				{currentIssues.map(issue => (
-					<S.ListOne>
-						<StyledLink to={`/issues/${issue.number}`}>
-							<p>#{issue.number}</p>
-							<h2>{issue.title}</h2>
-							<p>comments({issue.comments})</p>
-							<p>
-								{issue.body.length > 100
-									? `${issue.body.slice(0, 100)}...`
-									: issue.body}
-								</p>
-							<p>{issue.user?.login}</p>
-							<p>{issue.create_at}</p>
-						</StyledLink>
-					</S.ListOne>
-				))}
-			</ul>
-			</S.Right>
-		</S.Top>
+					<ul>
+						{currentIssues.map(issue => (
+							<S.ListOne>
+								<StyledLink to={`/issues/${issue.number}`}>
+									<p>#{issue.number}</p>
+									<h2>{issue.title}</h2>
+									<p>comments({issue.comments})</p>
+									<p>
+										{issue.body.length > 100
+											? `${issue.body.slice(0, 100)}...`
+											: issue.body}
+									</p>
+									<p>{issue.user?.login}</p>
+									<p>{issue.create_at}</p>
+								</StyledLink>
+							</S.ListOne>
+						))}
+					</ul>
+				</S.Right>
+			</S.Top>
 			<Pasy
 				setCurrentPage={setCurrentPage}
 				currentPage={currentPage}
@@ -107,16 +104,14 @@ const StyledLink = styled(Link)`
 const Wrapper = styled.div`
 	width: 100%;
 	background-color: #ebf1f4;
-
 `
 const Top = styled.div`
 	display: flex;
 
-		//for Mobiles
-		@media only screen and (max-width: 600px) {
+	//for Mobiles
+	@media only screen and (max-width: 600px) {
 		width: 100%;
 		flex-direction: column;
-		
 	}
 	//for Tablets and Medium Screens
 	@media only screen and (min-width: 600px) {
@@ -138,10 +133,9 @@ const Title = styled.h1`
 	font-weight: 600;
 
 	//for Mobiles
-		@media only screen and (max-width: 600px) {
+	@media only screen and (max-width: 600px) {
 		width: 100%;
 		text-align: center;
-
 	}
 	//for Tablets and Medium Screens
 	@media only screen and (min-width: 600px) {
@@ -152,19 +146,17 @@ const Title = styled.h1`
 	@media only screen and (min-width: 992px) {
 		width: 20%;
 	}
-
 `
-const Right =styled.div`
+const Right = styled.div`
 	width: 80%;
 	padding: 40px 3%;
 	border-left: 1px solid black;
 	border-bottom: 1px solid black;
 
-		//for Mobiles
-		@media only screen and (max-width: 600px) {
-			width: 100%;
+	//for Mobiles
+	@media only screen and (max-width: 600px) {
+		width: 100%;
 		text-align: center;
-
 	}
 	//for Tablets and Medium Screens
 	@media only screen and (min-width: 600px) {
@@ -179,23 +171,22 @@ const Right =styled.div`
 `
 
 const CheckBox2 = styled(CheckBox)`
-		display: flex;
-    justify-content: flex-start;
-    align-items: center;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
 `
 const ListOne = styled.li`
 	border: 1px solid #333;
 	padding: 1rem;
 	border-radius: 15px;
 	margin: 20px 0;
-	box-shadow: 0 5px 15px 0px rgba(0,0,0,0.3);
+	box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.3);
 
-		//for Mobiles
-		@media only screen and (max-width: 600px) {
+	//for Mobiles
+	@media only screen and (max-width: 600px) {
 		width: 100%;
 		margin: 20px auto;
 		text-align: center;
-
 	}
 	//for Tablets and Medium Screens
 	@media only screen and (min-width: 600px) {
@@ -217,8 +208,5 @@ const S = {
 	Title,
 	Right,
 	ListOne,
-	CheckBox2
+	CheckBox2,
 }
-
-
-
