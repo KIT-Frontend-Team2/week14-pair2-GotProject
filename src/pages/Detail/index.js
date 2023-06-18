@@ -36,6 +36,20 @@ const DetailPageWrapper = styled.div`
 	${flexCenter}
 	margin-top: 0;
 	min-height: 100vh;
+	// 모바일
+	@media only screen and (max-width: 600px) {
+		min-height: calc(100vh - 60px);
+	}
+
+	// 중간 사이즈
+	@media only screen and (min-width: 600px) {
+		min-height: calc(100vh - 60px);
+	}
+
+	// 컴퓨터
+	@media only screen and (min-width: 992px) {
+		min-height: calc(100vh - 120px);
+	}
 `
 
 const DetailContainer = styled.div`
