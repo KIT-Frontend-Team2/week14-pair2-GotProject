@@ -21,7 +21,6 @@ const DetailPage = () => {
 			<p>{details.state}</p>
 			<p>{details.comments}</p>
 			<p>{details.user?.login}</p>
-			<p>{details.created_at}</p>
 			<p>{details.body}</p>
 		</div>
 	)
