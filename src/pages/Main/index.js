@@ -10,7 +10,6 @@ const MainPage = () => {
 	const dispatch = useDispatch()
 	const { pageNum } = useParams()
 	const { issues } = useSelector(state => state.issue)
-	const [searchParams, setSearchParams] = useSearchParams()
 	const [currentPage, setCurrentPage] = useState(parseInt(pageNum) || 1)
 	const itemsPerPage = 10
 	const totalItems = 200
