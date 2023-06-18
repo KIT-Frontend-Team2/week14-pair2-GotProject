@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { Link, useParams, useSearchParams } from 'react-router-dom'
+import { Link, useParams} from 'react-router-dom'
 
 import { fetchIssues } from 'reducer/issue'
 import Pasy from './components/pagination'
@@ -10,7 +10,6 @@ const MainPage = () => {
 	const dispatch = useDispatch()
 	const { pageNum } = useParams()
 	const { issues } = useSelector(state => state.issue)
-	const [searchParams, setSearchParams] = useSearchParams()
 	const [currentPage, setCurrentPage] = useState(parseInt(pageNum) || 1)
 	const itemsPerPage = 10
 	const totalItems = 200
