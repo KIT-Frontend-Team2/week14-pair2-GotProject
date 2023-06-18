@@ -1,8 +1,7 @@
 import CheckBox from 'Filter/checkbox'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useParams } from 'react-router-dom'
-
+import { Link, useParams} from 'react-router-dom'
 import { fetchIssues } from 'reducer/issue'
 import styled from 'styled-components'
 import Pasy from './components/pagination'
