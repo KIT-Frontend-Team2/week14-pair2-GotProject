@@ -57,38 +57,41 @@ const MainPage = () => {
 	}
 
 	return (
-		<div>
-			<h1>Angular CLI!</h1>
+		<S.Wrapper>
+			<S.Top>
+				<Title>Angular CLI!</Title>
 
-			<CheckBox
-				handleFilters={filters => handleFilters(filters, 'continents')}
-			/>
+				<S.Right>
+					<S.CheckBox2
+						handleFilters={filters => handleFilters(filters, 'continents')}
+					/>
 
-			<ul>
-				{currentIssues.map(issue => (
-					<li>
-						<StyledLink to={`/issues/${issue.number}`}>
-							<p>#{issue.number}</p>
-							<h2>{issue.title}</h2>
-							<p>comments({issue.comments})</p>
-							<p>
-								{issue.body.length > 100
-									? `${issue.body.slice(0, 100)}...`
-									: issue.body}
-							</p>
-							<p>{issue.user?.login}</p>
-							<p>{issue.create_at}</p>
-						</StyledLink>
-					</li>
-				))}
-			</ul>
-
+					<ul>
+						{currentIssues.map(issue => (
+							<S.ListOne>
+								<StyledLink to={`/issues/${issue.number}`}>
+									<p>#{issue.number}</p>
+									<h2>{issue.title}</h2>
+									<p>comments({issue.comments})</p>
+									<p>
+										{issue.body.length > 100
+											? `${issue.body.slice(0, 100)}...`
+											: issue.body}
+									</p>
+									<p>{issue.user?.login}</p>
+									<p>{issue.create_at}</p>
+								</StyledLink>
+							</S.ListOne>
+						))}
+					</ul>
+				</S.Right>
+			</S.Top>
 			<Pasy
 				setCurrentPage={setCurrentPage}
 				currentPage={currentPage}
 				totalPages={totalPages}
 			/>
-		</div>
+		</S.Wrapper>
 	)
 }
 export default MainPage
@@ -97,3 +100,113 @@ const StyledLink = styled(Link)`
 	text-decoration: none;
 	color: #000;
 `
+
+const Wrapper = styled.div`
+	width: 100%;
+	background-color: #ebf1f4;
+`
+const Top = styled.div`
+	display: flex;
+
+	//for Mobiles
+	@media only screen and (max-width: 600px) {
+		width: 100%;
+		flex-direction: column;
+	}
+	//for Tablets and Medium Screens
+	@media only screen and (min-width: 600px) {
+		width: 100%;
+		flex-direction: column;
+	}
+	//for laptops and desktops
+	@media only screen and (min-width: 992px) {
+		width: 100%;
+		flex-direction: row;
+	}
+`
+
+const Title = styled.h1`
+	width: 20%;
+	font-size: 36px;
+	border-bottom: 1px solid black;
+	padding: 40px 3%;
+	font-weight: 600;
+
+	//for Mobiles
+	@media only screen and (max-width: 600px) {
+		width: 100%;
+		text-align: center;
+	}
+	//for Tablets and Medium Screens
+	@media only screen and (min-width: 600px) {
+		width: 100%;
+		text-align: center;
+	}
+	//for laptops and desktops
+	@media only screen and (min-width: 992px) {
+		width: 20%;
+	}
+`
+const Right = styled.div`
+	width: 80%;
+	padding: 40px 3%;
+	border-left: 1px solid black;
+	border-bottom: 1px solid black;
+
+	//for Mobiles
+	@media only screen and (max-width: 600px) {
+		width: 100%;
+		text-align: center;
+	}
+	//for Tablets and Medium Screens
+	@media only screen and (min-width: 600px) {
+		width: 100%;
+		text-align: center;
+	}
+	//for laptops and desktops
+	@media only screen and (min-width: 992px) {
+		width: 80%;
+		text-align: left;
+	}
+`
+
+const CheckBox2 = styled(CheckBox)`
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+`
+const ListOne = styled.li`
+	border: 1px solid #333;
+	padding: 1rem;
+	border-radius: 15px;
+	margin: 20px 0;
+	box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.3);
+
+	//for Mobiles
+	@media only screen and (max-width: 600px) {
+		width: 100%;
+		margin: 20px auto;
+		text-align: center;
+	}
+	//for Tablets and Medium Screens
+	@media only screen and (min-width: 600px) {
+		width: 100%;
+		margin: 20px auto;
+		text-align: center;
+	}
+	//for laptops and desktops
+	@media only screen and (min-width: 992px) {
+		width: 100%;
+		margin: 20px auto;
+		text-align: left;
+	}
+`
+
+const S = {
+	Wrapper,
+	Top,
+	Title,
+	Right,
+	ListOne,
+	CheckBox2,
+}
